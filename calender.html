@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-touch-fullscreen" content="YES" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="./calender.css">
+    <title>时间控件</title>
+    <script type="text/javascript">
+        (function(doc, win, undefined) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if(clientWidth === undefined) return;
+                    docEl.style.fontSize =(clientWidth / 750)*100 + 'px';
+                    docEl.style.display = "block";
+                };
+            if(doc.addEventListener === undefined) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false)
+        })(document, window);
+    </script>
+<body>
+<button class="calender">calender</button>
+<div id="calender"></div>
+<input class="show"></input>
+<script src="http://s.thsi.cn/js/m/js/zepto.min.js"></script>
+<script src="calender.js"></script>
+<script>
+    $('.show').on('click',function () {
+        calender.init('#calender','.show');
+    });
+</script>
+</body>
+</html>
